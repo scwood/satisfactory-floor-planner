@@ -15,6 +15,7 @@ import conveyorBeltTurnImage from "@/assets/conveyor_belt_turn.png";
 import coalPoweredGeneratorImage from "@/assets/coal_powered_generator.png";
 import conveyorLiftFloorImage from "@/assets/conveyor_lift_floor.png";
 import conveyorLiftCeilingImage from "@/assets/conveyor_lift_ceiling.png";
+import fuelPoweredGeneratorImage from "@/assets/fuel_powered_generator.png";
 
 export const BUILDING_TYPES: BuildingType[] = [
   {
@@ -32,6 +33,14 @@ export const BUILDING_TYPES: BuildingType[] = [
     lengthMeters: 26,
     image: coalPoweredGeneratorImage,
     imageGuide: { x: 0.083, y: 0.036, w: 0.834, h: 0.94 },
+  },
+  {
+    key: "fuel_powered_generator",
+    name: "Fuel-Powered Generator",
+    widthMeters: 20,
+    lengthMeters: 20,
+    image: fuelPoweredGeneratorImage,
+    imageGuide: { x: 0.037, y: 0.01, w: 0.927, h: 0.98 },
   },
   {
     key: "constructor",
