@@ -73,6 +73,7 @@ interface LayoutState {
   renameLayout: (id: LayoutId, name: string) => void;
   deleteLayout: (id: LayoutId) => void;
   selectLayout: (id: LayoutId) => void;
+  reorderLayout: (id: LayoutId, newIndex: number) => void;
 }
 
 const snap = (m: number) => Math.round(m / SNAP_UNIT_METERS) * SNAP_UNIT_METERS;
@@ -448,6 +449,16 @@ export const useLayoutStore = create<LayoutState>()(
                 ? { currentLayoutId: id, selectedIds: [], linearAnchor: null }
                 : s,
             ),
+
+          reorderLayout: (id, newIndex) =>
+            set((s) => {
+              const from = s.layoutOrder.indexOf(id);
+              if (from === -1 || from === newIndex) return s;
+              const order = [...s.layoutOrder];
+              order.splice(from, 1);
+              order.splice(newIndex, 0, id);
+              return { layoutOrder: order };
+            }),
         };
       },
       {

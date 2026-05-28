@@ -31,6 +31,7 @@ export function LeftPanel() {
   const renameLayout = useLayoutStore((s) => s.renameLayout);
   const deleteLayout = useLayoutStore((s) => s.deleteLayout);
   const selectLayout = useLayoutStore((s) => s.selectLayout);
+  const reorderLayout = useLayoutStore((s) => s.reorderLayout);
 
   const canUndo = useTemporalStore((s) => s.pastStates.length > 0);
   const canRedo = useTemporalStore((s) => s.futureStates.length > 0);
@@ -40,6 +41,8 @@ export function LeftPanel() {
 
   const [editingId, setEditingId] = useState<string | null>(null);
   const [draftName, setDraftName] = useState("");
+  const [draggingId, setDraggingId] = useState<string | null>(null);
+  const [dragOverId, setDragOverId] = useState<string | null>(null);
 
   const startRename = (id: string, currentName: string) => {
     setEditingId(id);
@@ -80,12 +83,49 @@ export function LeftPanel() {
           const isCurrent = id === currentLayoutId;
           const isEditing = editingId === id;
           return (
-            <li key={id} className="group">
+            <li
+              key={id}
+              className={`group border-t-2 ${
+                dragOverId === id && draggingId !== id
+                  ? "border-primary"
+                  : "border-transparent"
+              }`}
+              draggable={!isEditing}
+              onDragStart={() => setDraggingId(id)}
+              onDragEnd={() => {
+                setDraggingId(null);
+                setDragOverId(null);
+              }}
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOverId(id);
+              }}
+              onDragLeave={() => setDragOverId(null)}
+              onDrop={() => {
+                if (draggingId && dragOverId) {
+                  reorderLayout(draggingId, layoutOrder.indexOf(dragOverId));
+                }
+                setDraggingId(null);
+                setDragOverId(null);
+              }}
+            >
               <div
                 className={`flex items-center gap-1 px-2 py-1 ${
-                  isCurrent ? "bg-accent" : "hover:bg-accent/50"
+                  draggingId === id
+                    ? "opacity-40"
+                    : isCurrent
+                      ? "bg-accent"
+                      : "hover:bg-accent/50"
                 }`}
               >
+                {!isEditing && (
+                  <span
+                    className="shrink-0 cursor-grab opacity-0 group-hover:opacity-100 active:cursor-grabbing"
+                    title="Drag to reorder"
+                  >
+                    ⠿
+                  </span>
+                )}
                 {isEditing ? (
                   <input
                     autoFocus
