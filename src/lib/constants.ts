@@ -9,7 +9,7 @@ export const ZOOM_STEP = 1.1;
 // At zoom levels below this, the 1m grid is too dense to be useful.
 export const MIN_SCALE_FOR_FINE_GRID = 0.75;
 
-export const STORAGE_KEY = "satisfactory-layout-planner:v1";
+export const STORAGE_KEY = "satisfactory-floor-planner:v1";
 
 interface CanvasColors {
   grid: string;

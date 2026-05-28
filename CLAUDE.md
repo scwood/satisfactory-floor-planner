@@ -1,4 +1,4 @@
-# Satisfactory Layout Planner
+# Satisfactory Floor Planner
 
 A "Figma-lite" web tool for planning factory layouts in the game **Satisfactory**.
 
@@ -21,7 +21,7 @@ A "Figma-lite" web tool for planning factory layouts in the game **Satisfactory*
 
 ## Deployment
 
-GitHub Pages, via `npm run deploy` (uses `gh-pages` to publish `dist/`). The Vite `base` is set to `/satisfactory-layout-planner/` to match the Pages path.
+GitHub Pages, via `npm run deploy` (uses `gh-pages` to publish `dist/`). The Vite `base` is set to `/satisfactory-floor-planner/` to match the Pages path.
 
 ## Project structure
 
