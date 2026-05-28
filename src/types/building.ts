@@ -2,9 +2,17 @@ export type BuildingId = string;
 
 export type BuildingTypeKey = string;
 
+export type BuildingCategory =
+  | "production"
+  | "power"
+  | "logistics"
+  | "organization"
+  | "misc";
+
 export interface BuildingType {
   key: BuildingTypeKey;
   name: string;
+  category: BuildingCategory;
   widthMeters: number;
   lengthMeters: number;
   image?: string;

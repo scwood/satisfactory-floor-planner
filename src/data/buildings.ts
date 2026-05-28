@@ -1,4 +1,4 @@
-import type { BuildingType } from "@/types/building";
+import type { BuildingCategory, BuildingType } from "@/types/building";
 import { measureLabel, LABEL_PLACEHOLDER_TEXT } from "@/lib/labelMeasure";
 import constructorImage from "@/assets/constructor.png";
 import foundryImage from "@/assets/foundry.png";
@@ -21,6 +21,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "assembler",
     name: "Assembler",
+    category: "production",
     widthMeters: 9,
     lengthMeters: 16,
     image: assemblerImage,
@@ -29,6 +30,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "coal_powered_generator",
     name: "Coal-Powered Generator",
+    category: "power",
     widthMeters: 10,
     lengthMeters: 26,
     image: coalPoweredGeneratorImage,
@@ -37,6 +39,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "fuel_powered_generator",
     name: "Fuel-Powered Generator",
+    category: "power",
     widthMeters: 20,
     lengthMeters: 20,
     image: fuelPoweredGeneratorImage,
@@ -45,6 +48,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "constructor",
     name: "Constructor",
+    category: "production",
     widthMeters: 8,
     lengthMeters: 10,
     image: constructorImage,
@@ -53,6 +57,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "foundry",
     name: "Foundry",
+    category: "production",
     widthMeters: 10,
     lengthMeters: 10,
     image: foundryImage,
@@ -61,6 +66,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "manufacturer",
     name: "Manufacturer",
+    category: "production",
     widthMeters: 18,
     lengthMeters: 20,
     image: manufacturerImage,
@@ -69,6 +75,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "packager",
     name: "Packager",
+    category: "production",
     widthMeters: 8,
     lengthMeters: 8,
     image: packagerImage,
@@ -77,6 +84,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "refinery",
     name: "Refinery",
+    category: "production",
     widthMeters: 10,
     lengthMeters: 22,
     image: refineryImage,
@@ -85,6 +93,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "smelter",
     name: "Smelter",
+    category: "production",
     widthMeters: 6,
     lengthMeters: 9,
     image: smelterImage,
@@ -93,6 +102,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "storage_container",
     name: "Storage Container",
+    category: "organization",
     widthMeters: 5,
     lengthMeters: 11,
     image: storageContainerImage,
@@ -101,6 +111,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "conveyor_belt",
     name: "Conveyor Belt",
+    category: "logistics",
     widthMeters: 2,
     lengthMeters: 1,
     image: conveyorBeltImage,
@@ -110,6 +121,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "conveyor_belt_turn",
     name: "Conveyor Belt Turn",
+    category: "logistics",
     widthMeters: 3,
     lengthMeters: 3,
     image: conveyorBeltTurnImage,
@@ -118,6 +130,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "conveyor_splitter",
     name: "Conveyor Splitter",
+    category: "logistics",
     widthMeters: 4,
     lengthMeters: 4,
     image: conveyorSplitterImage,
@@ -126,6 +139,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "conveyor_merger",
     name: "Conveyor Merger",
+    category: "logistics",
     widthMeters: 4,
     lengthMeters: 4,
     image: conveyorMergerImage,
@@ -134,6 +148,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "conveyor_lift_floor",
     name: "Conveyor Lift from floor",
+    category: "logistics",
     widthMeters: 2,
     lengthMeters: 2,
     image: conveyorLiftFloorImage,
@@ -142,6 +157,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "conveyor_lift_ceiling",
     name: "Conveyor Lift from ceiling",
+    category: "logistics",
     widthMeters: 2,
     lengthMeters: 2,
     image: conveyorLiftCeilingImage,
@@ -150,6 +166,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "text_label",
     name: "Text Label",
+    category: "misc",
     // Type defaults match the placeholder's measured size so the placement
     // ghost is the same shape as the label that lands.
     ...measureLabel(LABEL_PLACEHOLDER_TEXT),
@@ -158,6 +175,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   {
     key: "wall",
     name: "Wall",
+    category: "misc",
     // Walls have no inherent size; per-instance endpoints define the geometry.
     widthMeters: 0,
     lengthMeters: 0,
@@ -167,3 +185,12 @@ export const BUILDING_TYPES: BuildingType[] = [
 
 export const BUILDING_TYPES_BY_KEY: Record<string, BuildingType> =
   Object.fromEntries(BUILDING_TYPES.map((t) => [t.key, t]));
+
+/** Display order and header labels for the buildings palette. */
+export const BUILDING_CATEGORIES: { key: BuildingCategory; label: string }[] = [
+  { key: "production", label: "Production" },
+  { key: "power", label: "Power" },
+  { key: "logistics", label: "Logistics" },
+  { key: "organization", label: "Organization" },
+  { key: "misc", label: "Misc" },
+];
