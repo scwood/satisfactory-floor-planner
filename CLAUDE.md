@@ -42,7 +42,7 @@ Path alias `@/` resolves to `src/`.
 
 ## Conventions
 
-- A user can have multiple named **layouts**. The store holds `layouts: Record<LayoutId, Layout>` plus `layoutOrder` and `currentLayoutId`; selection and clipboard live at the top level and apply to the current layout.
+- A user can have multiple named **floor plans** (labelled "Floor plans" in the UI; still named `layout*` in code). The store holds `layouts: Record<LayoutId, Layout>` plus `layoutOrder` and `currentLayoutId`; selection and clipboard live at the top level and apply to the current layout.
 - Within a layout, buildings are stored as a `Record<BuildingId, PlacedBuilding>` keyed by id, not as an array — selection and updates stay O(1).
 - Building mutations (`addBuilding`, `updateBuilding`, `removeBuildings`, etc.) always operate on the current layout. Bump the persist `version` and add a `migrate` step when changing the persisted shape.
 - Snap rounding is centralized; do not re-implement `Math.round(x / GRID)` inline.

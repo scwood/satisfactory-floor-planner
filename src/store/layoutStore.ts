@@ -80,7 +80,7 @@ const snap = (m: number) => Math.round(m / SNAP_UNIT_METERS) * SNAP_UNIT_METERS;
 
 const newId = () => crypto.randomUUID();
 
-const makeEmptyLayout = (name = "Untitled layout"): Layout => ({
+const makeEmptyLayout = (name = "Untitled floor plan"): Layout => ({
   id: newId(),
   name,
   buildings: {},
@@ -101,7 +101,7 @@ export const useLayoutStore = create<LayoutState>()(
   persist(
     temporal(
       (set, get) => {
-        const initial = makeEmptyLayout("Layout 1");
+        const initial = makeEmptyLayout("Floor plan 1");
         return {
           layouts: { [initial.id]: initial },
           layoutOrder: [initial.id],
@@ -394,7 +394,7 @@ export const useLayoutStore = create<LayoutState>()(
 
           createLayout: (name) => {
             const layout = makeEmptyLayout(
-              name ?? `Layout ${get().layoutOrder.length + 1}`,
+              name ?? `Floor plan ${get().layoutOrder.length + 1}`,
             );
             set((s) => ({
               layouts: { ...s.layouts, [layout.id]: layout },
@@ -422,7 +422,7 @@ export const useLayoutStore = create<LayoutState>()(
               const nextOrder = s.layoutOrder.filter((lid) => lid !== id);
 
               if (nextOrder.length === 0) {
-                const fresh = makeEmptyLayout("Layout 1");
+                const fresh = makeEmptyLayout("Floor plan 1");
                 return {
                   layouts: { [fresh.id]: fresh },
                   layoutOrder: [fresh.id],
@@ -484,7 +484,7 @@ export const useLayoutStore = create<LayoutState>()(
           const old = persisted as {
             buildings?: Record<string, PlacedBuilding>;
           };
-          const layout = makeEmptyLayout("Layout 1");
+          const layout = makeEmptyLayout("Floor plan 1");
           layout.buildings = old.buildings ?? {};
           return {
             layouts: { [layout.id]: layout },

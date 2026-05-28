@@ -58,7 +58,7 @@ export function LeftPanel() {
   };
 
   const handleDelete = (id: string, name: string) => {
-    if (confirm(`Delete layout "${name}"? This can't be undone.`)) {
+    if (confirm(`Delete floor plan "${name}"? This can't be undone.`)) {
       deleteLayout(id);
     }
   };
@@ -66,12 +66,12 @@ export function LeftPanel() {
   return (
     <aside className="flex w-60 shrink-0 flex-col border-r text-sm">
       <div className="flex items-center justify-between border-b px-3 py-2">
-        <h2 className="font-medium">Layouts</h2>
+        <h2 className="font-medium">Floor plans</h2>
         <button
           type="button"
           onClick={() => createLayout()}
           className="rounded px-2 py-0.5 text-xs hover:bg-accent"
-          title="New layout"
+          title="New floor plan"
         >
           + New
         </button>
