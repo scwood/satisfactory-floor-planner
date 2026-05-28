@@ -3,6 +3,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Satisfontory";
+  src: url("./assets/fonts/Satisfontory.woff2") format("woff2");
+  font-display: swap;
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -73,6 +79,7 @@
 }
 
 @theme inline {
+  --font-display: "Satisfontory", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
