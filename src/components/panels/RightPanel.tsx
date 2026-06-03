@@ -19,7 +19,7 @@ export function RightPanel() {
         {BUILDING_CATEGORIES.map((category) => {
           const types = BUILDING_TYPES.filter(
             (type) => type.category === category.key,
-          );
+          ).sort((a, b) => a.name.localeCompare(b.name));
           if (types.length === 0) return null;
           return (
             <section key={category.key} className="border-t first:border-t-0">

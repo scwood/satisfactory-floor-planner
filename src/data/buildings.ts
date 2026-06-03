@@ -145,7 +145,7 @@ export const BUILDING_TYPES: BuildingType[] = [
   },
   {
     key: "pipe_junction",
-    name: "Pipeline junction ",
+    name: "Pipeline junction",
     category: "logistics",
     widthMeters: 2,
     lengthMeters: 2,
