@@ -16,6 +16,12 @@ import coalPoweredGeneratorImage from "@/assets/coal_powered_generator.png";
 import conveyorLiftFloorImage from "@/assets/conveyor_lift_floor.png";
 import conveyorLiftCeilingImage from "@/assets/conveyor_lift_ceiling.png";
 import fuelPoweredGeneratorImage from "@/assets/fuel_powered_generator.png";
+import pipeImage from "@/assets/pipe.png";
+import pipeTurnImage from "@/assets/pipe_turn.png";
+import pipeJunctionImage from "@/assets/pipe_junction.png";
+import pipeJunctionVerticalImage from "@/assets/pipe_junction_vertical.png";
+import pipeFromAboveImage from "@/assets/pipe_from_above.png";
+import pipeFromBelowImage from "@/assets/pipe_from_below.png";
 
 export const BUILDING_TYPES: BuildingType[] = [
   {
@@ -119,8 +125,63 @@ export const BUILDING_TYPES: BuildingType[] = [
     linear: true,
   },
   {
+    key: "pipe",
+    name: "Pipeline",
+    category: "logistics",
+    widthMeters: 2,
+    lengthMeters: 1,
+    image: pipeImage,
+    imageGuide: { x: 0.1, y: 0.01, w: 0.8, h: 0.98 },
+    linear: true,
+  },
+  {
+    key: "pipe_turn",
+    name: "Pipeline 90° Turn",
+    category: "logistics",
+    widthMeters: 2,
+    lengthMeters: 2,
+    image: pipeTurnImage,
+    imageGuide: { x: 0.11, y: 0.11, w: 0.91, h: 0.91 },
+  },
+  {
+    key: "pipe_junction",
+    name: "Pipeline junction ",
+    category: "logistics",
+    widthMeters: 2,
+    lengthMeters: 2,
+    image: pipeJunctionImage,
+    imageGuide: { x: 0.13, y: 0.13, w: 0.74, h: 0.74 },
+  },
+  {
+    key: "pipe_junction_vertical",
+    name: "Pipeline junction vertical",
+    category: "logistics",
+    widthMeters: 2,
+    lengthMeters: 2,
+    image: pipeJunctionVerticalImage,
+    imageGuide: { x: 0.05, y: 0.13, w: 0.9, h: 0.74 },
+  },
+  {
+    key: "pipe_from_above",
+    name: "Pipeline from above",
+    category: "logistics",
+    widthMeters: 2,
+    lengthMeters: 2,
+    image: pipeFromAboveImage,
+    imageGuide: { x: 0.05, y: 0.09, w: 0.96, h: 0.82 },
+  },
+  {
+    key: "pipe_from_below",
+    name: "Pipeline from below",
+    category: "logistics",
+    widthMeters: 2,
+    lengthMeters: 2,
+    image: pipeFromBelowImage,
+    imageGuide: { x: 0.1, y: 0.12, w: 0.91, h: 0.76 },
+  },
+  {
     key: "conveyor_belt_turn",
-    name: "Conveyor Belt Turn",
+    name: "Conveyor Belt 90° Turn",
     category: "logistics",
     widthMeters: 3,
     lengthMeters: 3,
