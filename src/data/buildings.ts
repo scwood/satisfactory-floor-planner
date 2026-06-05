@@ -22,6 +22,7 @@ import pipeJunctionImage from "@/assets/pipe_junction.png";
 import pipeJunctionVerticalImage from "@/assets/pipe_junction_vertical.png";
 import pipeFromAboveImage from "@/assets/pipe_from_above.png";
 import pipeFromBelowImage from "@/assets/pipe_from_below.png";
+import blenderImage from "@/assets/blender.png";
 
 export const BUILDING_TYPES: BuildingType[] = [
   {
@@ -32,6 +33,15 @@ export const BUILDING_TYPES: BuildingType[] = [
     lengthMeters: 16,
     image: assemblerImage,
     imageGuide: { x: 0.068, y: 0.03, w: 0.85, h: 0.94 },
+  },
+  {
+    key: "blender",
+    name: "Blender",
+    category: "production",
+    widthMeters: 18,
+    lengthMeters: 16,
+    image: blenderImage,
+    imageGuide: { x: 0.096, y: 0.079, w: 0.873, h: 0.842 },
   },
   {
     key: "coal_powered_generator",
